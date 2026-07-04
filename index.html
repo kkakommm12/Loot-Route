@@ -24,6 +24,13 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body data-theme="light" data-interface="glass">
+    <div class="update-banner hidden" id="updateBanner" role="status" aria-live="polite">
+      <div class="update-banner__content">
+        <span>✨ New update available</span>
+        <button class="button secondary update-banner__button" id="updateAppBtn" type="button">Update now</button>
+      </div>
+    </div>
+
     <header class="hero">
       <div class="container">
         <nav class="top-nav">
@@ -218,6 +225,8 @@
       const themeToggle = document.getElementById('themeToggle');
       const installAppBtn = document.getElementById('installAppBtn');
       const installNote = document.getElementById('installNote');
+      const updateBanner = document.getElementById('updateBanner');
+      const updateAppBtn = document.getElementById('updateAppBtn');
       const interfaceButtons = document.querySelectorAll('.interface-btn');
       const countAll = document.getElementById('count-all');
       const countSoftware = document.getElementById('count-software');
@@ -1331,6 +1340,16 @@
       });
 
       let deferredInstallPrompt = null;
+      let serviceWorkerRegistration = null;
+
+      function showUpdateBanner(registration) {
+        serviceWorkerRegistration = registration;
+        updateBanner.classList.remove('hidden');
+      }
+
+      function hideUpdateBanner() {
+        updateBanner.classList.add('hidden');
+      }
 
       window.addEventListener('beforeinstallprompt', (event) => {
         event.preventDefault();
@@ -1363,9 +1382,53 @@
 
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./sw.js').catch(() => {});
+          navigator.serviceWorker.register('./sw.js').then((registration) => {
+            serviceWorkerRegistration = registration;
+
+            registration.addEventListener('updatefound', () => {
+              const installingWorker = registration.installing;
+              if (!installingWorker) return;
+
+              installingWorker.addEventListener('statechange', () => {
+                if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  showUpdateBanner(registration);
+                }
+              });
+            });
+
+            if (registration.waiting) {
+              showUpdateBanner(registration);
+            }
+
+            const checkForUpdates = () => {
+              registration.update().catch(() => {});
+            };
+
+            document.addEventListener('visibilitychange', () => {
+              if (!document.hidden) {
+                checkForUpdates();
+              }
+            });
+
+            window.addEventListener('focus', checkForUpdates);
+            setInterval(checkForUpdates, 60000);
+          }).catch(() => {});
         });
       }
+
+      navigator.serviceWorker?.addEventListener('controllerchange', () => {
+        window.location.reload();
+      });
+
+      updateAppBtn.addEventListener('click', () => {
+        if (serviceWorkerRegistration?.waiting) {
+          hideUpdateBanner();
+          serviceWorkerRegistration.waiting.postMessage({ type: 'SKIP_WAITING' });
+          return;
+        }
+
+        window.location.reload();
+      });
 
       interfaceButtons.forEach((button) => {
         button.addEventListener('click', () => {

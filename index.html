@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loot Route</title>
+    <meta
+      name="description"
+      content="Loot Route is a clean and modern landing page for software, games, APKs, and mods."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="lootrouteicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-theme="light" data-interface="glass">
+    <header class="hero">
+      <div class="container">
+        <nav class="top-nav">
+          <a class="brand" href="#">Loot Route</a>
+          <div class="nav-actions">
+            <button id="themeToggle" class="theme-toggle" type="button">🌙 Dark mode</button>
+            <a class="nav-cta" href="#downloads">Browse</a>
+          </div>
+        </nav>
+
+        <div class="hero-content">
+          <p class="eyebrow">Legit downloads • all devices • safe browsing</p>
+          <h1>Explore software, games, APKs, and mods in one clean hub.</h1>
+          <p class="lead">
+            Built for phones, tablets, and PCs, this page focuses on a smooth browsing experience while keeping content legal, safe, and respectful of copyright and platform rules.
+          </p>
+          <div class="interface-picker">
+            <span class="interface-label">Interface style:</span>
+            <div class="interface-buttons">
+              <button class="button interface-btn" data-interface="classic" type="button">Classic Red</button>
+              <button class="button interface-btn" data-interface="midnight" type="button">Midnight Neo</button>
+              <button class="button interface-btn" data-interface="minimal" type="button">Minimal Light</button>
+              <button class="button interface-btn active" data-interface="glass" type="button">Glass Frost</button>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a class="button primary" href="#downloads">Explore downloads</a>
+            <a class="button secondary" href="#policy">Read our policy</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="downloads" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Download categories</p>
+            <h2>Browse all available downloads for games, software, APKs, and mods.</h2>
+            <p class="section-note">Each category shows exactly how many entries are available so you can choose the right type fast.</p>
+          </div>
+
+          <div class="toolbar">
+            <div class="tabs" role="tablist" aria-label="Download categories">
+              <button class="tab active" data-tab="all">All types <span class="tab-count" id="count-all">0</span></button>
+              <button class="tab" data-tab="software">Software <span class="tab-count" id="count-software">0</span></button>
+              <button class="tab" data-tab="games">Games <span class="tab-count" id="count-games">0</span></button>
+              <button class="tab" data-tab="apks">Android APKs <span class="tab-count" id="count-apks">0</span></button>
+              <button class="tab" data-tab="mods">Game Mods <span class="tab-count" id="count-mods">0</span></button>
+            </div>
+            <div class="toolbar-controls">
+              <label class="search-control">
+                <input id="searchInput" type="search" placeholder="Search downloads..." />
+              </label>
+              <label class="sort-control">
+                <span>Sort by</span>
+                <select id="sortSelect">
+                  <option value="rating-desc">Rating: high to low</option>
+                  <option value="rating-asc">Rating: low to high</option>
+                  <option value="name-asc">Name: A - Z</option>
+                  <option value="name-desc">Name: Z - A</option>
+                  <option value="price-asc">Price: low to high</option>
+                  <option value="price-desc">Price: high to low</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="tab-panels">
+            <article class="tab-panel active" id="all">
+              <div class="catalog-grid" id="allGrid"></div>
+            </article>
+            <article class="tab-panel" id="software">
+              <div class="catalog-grid" id="softwareGrid"></div>
+            </article>
+            <article class="tab-panel" id="games">
+              <div class="catalog-grid" id="gamesGrid"></div>
+            </article>
+            <article class="tab-panel" id="apks">
+              <div class="catalog-grid" id="apksGrid"></div>
+            </article>
+            <article class="tab-panel" id="mods">
+              <div class="catalog-grid" id="modsGrid"></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="policy" class="section alt-section">
+        <div class="container split-layout">
+          <div>
+            <p class="eyebrow">Legal and safe use</p>
+            <h2>We support legitimate downloads, not piracy or unsafe content.</h2>
+            <p>
+              This website is designed to help users discover authorized software, legal media, and trusted downloads. It does not promote piracy, unauthorized access, or any content that violates copyright law or platform rules.
+            </p>
+          </div>
+          <div class="highlight-box">
+            <p>“Every download listed here is meant to be legal, safe, and respectful of creators, publishers, and platform policies.”</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="tos" class="section alt-section">
+        <div class="container split-layout">
+          <div>
+            <p class="eyebrow">Terms of Service</p>
+            <h2>Multiplayer cheats, hacks, and exploits are forbidden and may lead to permanent account ban.</h2>
+            <p>
+              All downloads listed here are selected for legality and safety. Any multiplayer cheat, exploit, or hack is disallowed. If a site or mod supports multiplayer cheating, it will not be included. Only offline, single-player mods, shaders, and legal downloads are supported.
+            </p>
+          </div>
+          <div class="highlight-box warning-box">
+            <p><strong>Notice:</strong> Using mods, hacks, or exploits for advantage in multiplayer or online environments can result in permanent account ban. This site only supports safe, offline, and single-player content.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="modal hidden" id="modsTosModal" role="dialog" aria-modal="true" aria-labelledby="modsTosTitle">
+        <div class="modal-card tos-modal-card">
+          <button class="modal-close" id="modsTosClose" type="button">✕</button>
+          <h3 id="modsTosTitle">Game Mods Terms & Conditions</h3>
+          <div class="tos-modal-content">
+            <p>Before entering the Game Mods section, you must agree to the following terms:</p>
+            <ul>
+              <li>Only offline, single-player mods and shaders are supported.</li>
+              <li>Mods that enable cheats, hacks, or exploits for multiplayer or online advantage are strictly prohibited.</li>
+              <li>Using mods or exploits to gain an advantage may result in a permanent account ban from the source platform.</li>
+              <li>If a mod or download is not clearly legal and safe, it will not be listed.</li>
+            </ul>
+          </div>
+          <div class="modal-actions">
+            <button class="button secondary" id="modsTosCancel" type="button">Cancel</button>
+            <button class="button primary" id="modsTosAgree" type="button">I agree</button>
+          </div>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="container contact-box">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2>Have suggestions or noticed a bug?</h2>
+          </div>
+          <div class="contact-actions">
+            <button class="button secondary" id="openSuggestionModal" type="button">Suggestions</button>
+            <button class="button primary" id="openBugModal" type="button">Report a bug</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="modal hidden" id="contactModal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+      <div class="modal-card contact-modal-card">
+        <button class="modal-close" id="contactModalClose" type="button">✕</button>
+        <h3 id="contactModalTitle">Send a message</h3>
+        <form id="contactForm" action="https://formspree.io/f/meebvlge" method="POST" class="contact-form">
+          <label class="input-group">
+            <span>Email</span>
+            <input type="email" name="email" required placeholder="you@example.com" />
+          </label>
+          <label class="input-group">
+            <span>Subject</span>
+            <select name="subject" id="contactSubject">
+              <option value="Suggestion">Suggestion</option>
+              <option value="Bug Report">Bug Report</option>
+            </select>
+          </label>
+          <label class="input-group">
+            <span>Message</span>
+            <textarea name="message" rows="5" required placeholder="Tell us what you need..."></textarea>
+          </label>
+          <div class="modal-actions">
+            <button class="button primary" type="submit">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© 2026 Loot Route. Fresh files for every device.</p>
+      </div>
+    </footer>
+
+    <script>
+      const tabs = document.querySelectorAll('.tab');
+      const panels = document.querySelectorAll('.tab-panel');
+      const sortSelect = document.getElementById('sortSelect');
+      const searchInput = document.getElementById('searchInput');
+      const themeToggle = document.getElementById('themeToggle');
+      const interfaceButtons = document.querySelectorAll('.interface-btn');
+      const countAll = document.getElementById('count-all');
+      const countSoftware = document.getElementById('count-software');
+      const countGames = document.getElementById('count-games');
+      const countApks = document.getElementById('count-apks');
+      const countMods = document.getElementById('count-mods');
+      const modsTosModal = document.getElementById('modsTosModal');
+      const modsTosAgree = document.getElementById('modsTosAgree');
+      const modsTosCancel = document.getElementById('modsTosCancel');
+      const modsTosClose = document.getElementById('modsTosClose');
+      let modsTosAccepted = localStorage.getItem('modsTosAccepted') === 'true';
+
+      const items = [
+        {
+          id: 'valorant',
+          title: 'Valorant',
+          category: 'games',
+          rating: 4.7,
+          os: 'Windows',
+          size: '8 GB+ depending on updates',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Tactical first-person shooter from Riot Games with competitive 5v5 gameplay and regular seasonal updates.',
+          image: 'https://www.google.com/s2/favicons?domain=playvalorant.com&sz=128',
+          platformLinks: {
+            windows: 'https://playvalorant.com/en-us/download/'
+          }
+        },
+        {
+          id: 'league-of-legends',
+          title: 'League of Legends',
+          category: 'games',
+          rating: 4.8,
+          os: 'Windows, macOS',
+          size: '16 GB+ depending on patches',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Legendary MOBA from Riot Games with ranked play, seasonal events, and global esports support.',
+          image: 'https://www.google.com/s2/favicons?domain=leagueoflegends.com&sz=128',
+          platformLinks: {
+            windows: 'https://www.leagueoflegends.com/en-us/download/',
+            macos: 'https://www.leagueoflegends.com/en-us/download/'
+          }
+        },
+        {
+          id: 'cyberpunk-2077',
+          title: 'Cyberpunk 2077',
+          category: 'games',
+          rating: 4.1,
+          os: 'Windows',
+          size: '70 GB+',
+          price: '$39.99',
+          priceSort: 39.99,
+          description: 'Open-world action RPG from CD Projekt Red set in Night City with deep story missions and immersive worldbuilding.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/header.jpg',
+          platformLinks: {
+            steam: 'https://store.steampowered.com/app/1091500/Cyberpunk_2077/'
+          }
+        },
+        {
+          id: 'witcher-3',
+          title: 'The Witcher 3',
+          category: 'games',
+          rating: 4.9,
+          os: 'Windows',
+          size: '45 GB+',
+          price: '$39.99',
+          priceSort: 39.99,
+          description: 'Award-winning open-world RPG from CD Projekt Red with a mature story, monster hunting, and massive DLC expansions.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/292030/header.jpg',
+          platformLinks: {
+            steam: 'https://store.steampowered.com/app/292030/The_Witcher_3_Wild_Hunt/'
+          }
+        },
+        {
+          id: 'rocket-league',
+          title: 'Rocket League',
+          category: 'games',
+          rating: 4.5,
+          os: 'Windows',
+          size: '20 GB+',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Hybrid sports-action game where cars battle on the pitch in fast-paced online matches.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/252950/header.jpg',
+          platformLinks: {
+            epic: 'https://www.epicgames.com/store/en-US/p/rocket-league',
+            steam: 'https://store.steampowered.com/app/252950/Rocket_League/'
+          }
+        },
+        {
+          id: 'apex-legends',
+          title: 'Apex Legends',
+          category: 'games',
+          rating: 4.4,
+          os: 'Windows',
+          size: '30 GB+',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Hero-shooter battle royale from Respawn Entertainment with dynamic movement and team-based play.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1172470/header.jpg',
+          platformLinks: {
+            steam: 'https://store.steampowered.com/app/1172470/Apex_Legends/'
+          }
+        },
+        {
+          id: 'warzone',
+          title: 'Call of Duty: Warzone',
+          category: 'games',
+          rating: 4.3,
+          os: 'Windows',
+          size: '60 GB+',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Free-to-play battle royale from Activision with large-scale maps, loadouts, and cross-platform support.',
+          image: 'https://www.google.com/s2/favicons?domain=callofduty.com&sz=128',
+          platformLinks: {
+            official: 'https://www.callofduty.com/warzone'
+          }
+        },
+        {
+          id: 'gta-v',
+          title: 'Grand Theft Auto V',
+          category: 'games',
+          rating: 4.8,
+          os: 'Windows',
+          size: '80 GB+',
+          price: '$29.99',
+          priceSort: 29.99,
+          description: 'Open-world action game from Rockstar Games with story missions, multiplayer, and an iconic city sandbox.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg',
+          platformLinks: {
+            steam: 'https://store.steampowered.com/app/271590/Grand_Theft_Auto_V/',
+            rockstar: 'https://store.rockstargames.com/'
+          }
+        },
+        {
+          id: 'fortnite',
+          title: 'Fortnite',
+          category: 'games',
+          rating: 4.5,
+          os: 'Windows, Android, iOS',
+          size: 'Mobile 10–30 GB · Desktop 30–70 GB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Fast-paced battle royale with seasonal events and creative modes, available via the Epic Games Launcher.',
+          image: 'https://www.google.com/s2/favicons?domain=fortnite.com&sz=128',
+          platformLinks: {
+            epic: 'https://www.epicgames.com/store/en-US/p/fortnite',
+            android: 'https://play.google.com/store/apps/details?id=com.epicgames.fortnite&hl=en',
+            ios: 'https://apps.apple.com/us/app/fortnite/id1485454935'
+          }
+        },
+        {
+          id: 'among-us',
+          title: 'Among Us',
+          category: 'games',
+          rating: 4.3,
+          os: 'Windows, Android, iOS',
+          size: 'TBD',
+          price: 'Free–$5',
+          priceSort: 0,
+          description: 'Popular social deduction game for casual multiplayer sessions on PC and mobile.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/945360/header.jpg',
+          platformLinks: {
+            steam: 'https://store.steampowered.com/app/945360/Among_Us/',
+            epic: 'https://www.epicgames.com/store/en-US/p/among-us',
+            android: 'https://play.google.com/store/apps/details?id=com.innersloth.spacemafia',
+            ios: 'https://apps.apple.com/us/app/among-us/id1351168404'
+          }
+        },
+        {
+          id: 'stardew-valley',
+          title: 'Stardew Valley',
+          category: 'games',
+          rating: 4.9,
+          os: 'Windows',
+          size: '500 MB',
+          price: '$14.99',
+          priceSort: 14.99,
+          description: 'Cozy farming RPG with crafting, mining, relationships, and seasonal events from ConcernedApe.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/413150/header.jpg',
+          platformLinks: {
+            steam: 'https://store.steampowered.com/app/413150/Stardew_Valley/'
+          }
+        },
+        {
+          id: 'terraria',
+          title: 'Terraria',
+          category: 'games',
+          rating: 4.7,
+          os: 'Windows',
+          size: '200 MB',
+          price: '$9.99',
+          priceSort: 9.99,
+          description: '2D sandbox adventure game with exploration, crafting, and multiplayer battles.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/105600/header.jpg',
+          platformLinks: {
+            steam: 'https://store.steampowered.com/app/105600/Terraria/'
+          }
+        },
+        {
+          id: 'counter-strike-2',
+          title: 'Counter-Strike 2',
+          category: 'games',
+          rating: 4.6,
+          os: 'Windows',
+          size: '25 GB+',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Competitive tactical shooter from Valve with refined CS gameplay and upgraded Source 2 visuals.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg',
+          platformLinks: {
+            steam: 'https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/'
+          }
+        },
+        {
+          id: 'destiny-2',
+          title: 'Destiny 2',
+          category: 'games',
+          rating: 4.5,
+          os: 'Windows',
+          size: '105 GB+',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Online multiplayer shooter with raids, seasonal content, and live-service storytelling from Bungie.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1085660/header.jpg',
+          platformLinks: {
+            steam: 'https://store.steampowered.com/app/1085660/Destiny_2/'
+          }
+        },
+        {
+          id: 'elden-ring',
+          title: 'Elden Ring',
+          category: 'games',
+          rating: 4.9,
+          os: 'Windows',
+          size: '60 GB+',
+          price: '$59.99',
+          priceSort: 59.99,
+          description: 'Open-world action RPG from FromSoftware with rich lore, challenging combat, and massive exploration.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1245620/header.jpg',
+          platformLinks: {
+            steam: 'https://store.steampowered.com/app/1245620/ELDEN_RING/'
+          }
+        },
+        {
+          id: 'baldurs-gate-3',
+          title: 'Baldur\'s Gate 3',
+          category: 'games',
+          rating: 4.9,
+          os: 'Windows',
+          size: '100 GB+',
+          price: '$59.99',
+          priceSort: 59.99,
+          description: 'Story-rich RPG from Larian Studios based on D&D rules, with deep choice-driven gameplay.',
+          image: 'https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/header.jpg',
+          platformLinks: {
+            steam: 'https://store.steampowered.com/app/1086940/Baldurs_Gate_3/'
+          }
+        },
+        {
+          id: 'dead-by-daylight',
+          title: 'Dead by Daylight',
+          category: 'games',
+          rating: 4.2,
+          os: 'Windows',
+          size: '25 GB+',
+          price: '$19.99',
+          priceSort: 19.99,
+          description: 'Asymmetrical horror multiplayer game where survivors face off against a player-controlled killer.',
+          image: 'https://www.google.com/s2/favicons?domain=deadbydaylight.com&sz=128',
+          platformLinks: {
+            steam: 'https://store.steampowered.com/app/701640/Dead_by_Daylight/'
+          }
+        },
+        {
+          id: 'obs-studio',
+          title: 'OBS Studio',
+          category: 'software',
+          rating: 4.8,
+          os: 'Windows, macOS, Linux',
+          size: '120 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Open-source streaming and recording software used for live content creation and screen capture.',
+          image: 'https://www.google.com/s2/favicons?domain=obsproject.com&sz=128',
+          platformLinks: {
+            windows: 'https://obsproject.com/download',
+            macos: 'https://obsproject.com/download',
+            linux: 'https://obsproject.com/download'
+          }
+        },
+        {
+          id: 'audacity',
+          title: 'Audacity',
+          category: 'software',
+          rating: 4.4,
+          os: 'Windows, macOS, Linux',
+          size: '30 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Free audio editor and recorder for multi-track editing, effects, and podcast production.',
+          image: 'https://www.google.com/s2/favicons?domain=audacityteam.org&sz=128',
+          platformLinks: {
+            windows: 'https://www.audacityteam.org/download/windows/',
+            macos: 'https://www.audacityteam.org/download/mac/',
+            linux: 'https://www.audacityteam.org/download/linux/'
+          }
+        },
+        {
+          id: 'gimp',
+          title: 'GIMP',
+          category: 'software',
+          rating: 4.6,
+          os: 'Windows, macOS, Linux',
+          size: '250 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Free image editor for retouching, graphic design, and digital painting.',
+          image: 'https://www.google.com/s2/favicons?domain=gimp.org&sz=128',
+          platformLinks: {
+            windows: 'https://www.gimp.org/downloads/',
+            macos: 'https://www.gimp.org/downloads/',
+            linux: 'https://www.gimp.org/downloads/'
+          }
+        },
+        {
+          id: 'visual-studio-code',
+          title: 'Visual Studio Code',
+          category: 'software',
+          rating: 4.9,
+          os: 'Windows, macOS, Linux',
+          size: '200 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Lightweight source-code editor from Microsoft with extensions, terminal support, and IntelliSense.',
+          image: 'https://www.google.com/s2/favicons?domain=code.visualstudio.com&sz=128',
+          platformLinks: {
+            windows: 'https://code.visualstudio.com/Download',
+            macos: 'https://code.visualstudio.com/Download',
+            linux: 'https://code.visualstudio.com/Download'
+          }
+        },
+        {
+          id: 'notepad-plus-plus',
+          title: 'Notepad++',
+          category: 'software',
+          rating: 4.5,
+          os: 'Windows',
+          size: '5 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Free source code editor and text editor for Windows, with syntax highlighting and plugin support.',
+          image: 'https://www.google.com/s2/favicons?domain=notepad-plus-plus.org&sz=128',
+          platformLinks: {
+            windows: 'https://notepad-plus-plus.org/downloads/'
+          }
+        },
+        {
+          id: 'winrar',
+          title: 'WinRAR',
+          category: 'software',
+          rating: 4.3,
+          os: 'Windows',
+          size: '4 MB',
+          price: '$29.00',
+          priceSort: 29.0,
+          description: 'Popular file archiver and compression utility for RAR and ZIP formats.',
+          image: 'https://www.google.com/s2/favicons?domain=win-rar.com&sz=128',
+          platformLinks: {
+            windows: 'https://www.win-rar.com/download.html'
+          }
+        },
+        {
+          id: '7zip',
+          title: '7-Zip',
+          category: 'software',
+          rating: 4.6,
+          os: 'Windows',
+          size: '1 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Open-source file archiver with high compression ratio and wide format support.',
+          image: 'https://www.google.com/s2/favicons?domain=7-zip.org&sz=128',
+          platformLinks: {
+            windows: 'https://www.7-zip.org/download.html'
+          }
+        },
+        {
+          id: 'handbrake',
+          title: 'HandBrake',
+          category: 'software',
+          rating: 4.4,
+          os: 'Windows, macOS, Linux',
+          size: '30 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Open-source video transcoder for converting and compressing media files.',
+          image: 'https://www.google.com/s2/favicons?domain=handbrake.fr&sz=128',
+          platformLinks: {
+            windows: 'https://handbrake.fr/downloads.php',
+            macos: 'https://handbrake.fr/downloads.php',
+            linux: 'https://handbrake.fr/downloads.php'
+          }
+        },
+        {
+          id: 'spotify',
+          title: 'Spotify',
+          category: 'software',
+          rating: 4.4,
+          os: 'Windows, macOS, Android, iOS',
+          size: '70 MB',
+          price: 'Free / $10.99',
+          priceSort: 0,
+          description: 'Official music streaming app with a free tier, playlists, podcasts, and premium subscription options.',
+          image: 'https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Black.png',
+          platformLinks: {
+            windows: 'https://www.spotify.com/download/',
+            macos: 'https://www.spotify.com/download/',
+            android: 'https://play.google.com/store/apps/details?id=com.spotify.music',
+            ios: 'https://apps.apple.com/us/app/spotify-music-and-podcasts/id324684580'
+          }
+        },
+        {
+          id: 'steam-app',
+          title: 'Steam Desktop App',
+          category: 'software',
+          rating: 4.7,
+          os: 'Windows, macOS, Linux',
+          size: '200 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Official PC game launcher and storefront from Valve for buying, updating, and launching games.',
+          image: 'https://www.google.com/s2/favicons?domain=steamcommunity.com&sz=128',
+          platformLinks: {
+            windows: 'https://store.steampowered.com/about/',
+            macos: 'https://store.steampowered.com/about/',
+            linux: 'https://store.steampowered.com/about/'
+          }
+        },
+        {
+          id: 'opera-gx',
+          title: 'Opera GX Browser',
+          category: 'software',
+          rating: 4.3,
+          os: 'Windows, macOS',
+          size: '75 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Gaming browser with performance tools, RGB theming, and integrated streaming support.',
+          image: 'https://www.google.com/s2/favicons?domain=opera.com&sz=128',
+          platformLinks: {
+            windows: 'https://www.opera.com/gx/download',
+            macos: 'https://www.opera.com/gx/download'
+          }
+        },
+        {
+          id: 'slack',
+          title: 'Slack',
+          category: 'software',
+          rating: 4.3,
+          os: 'Windows, macOS, Linux',
+          size: '100 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Official team communication app with channels, direct messages, and integrated productivity tools.',
+          image: 'https://www.google.com/s2/favicons?domain=slack.com&sz=128',
+          platformLinks: {
+            windows: 'https://slack.com/downloads/windows',
+            macos: 'https://slack.com/downloads/mac',
+            linux: 'https://slack.com/downloads/linux'
+          }
+        },
+        {
+          id: 'zoom',
+          title: 'Zoom',
+          category: 'software',
+          rating: 4.2,
+          os: 'Windows, macOS, Linux, Android, iOS',
+          size: '70 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Official video conferencing client for meetings, webinars, and screen sharing.',
+          image: 'https://www.google.com/s2/favicons?domain=zoom.us&sz=128',
+          platformLinks: {
+            windows: 'https://zoom.us/download',
+            macos: 'https://zoom.us/download',
+            linux: 'https://zoom.us/download',
+            android: 'https://play.google.com/store/apps/details?id=us.zoom.videomeetings',
+            ios: 'https://apps.apple.com/us/app/zoom-cloud-meetings/id546505307'
+          }
+        },
+        {
+          id: 'mozilla-firefox',
+          title: 'Mozilla Firefox',
+          category: 'software',
+          rating: 4.6,
+          os: 'Windows, macOS, Linux, Android, iOS',
+          size: '80 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Privacy-focused web browser with tracking protection, extension support, and secure syncing across devices.',
+          image: 'https://www.google.com/s2/favicons?domain=mozilla.org&sz=128',
+          platformLinks: {
+            windows: 'https://www.mozilla.org/firefox/download/',
+            macos: 'https://www.mozilla.org/firefox/download/',
+            linux: 'https://www.mozilla.org/firefox/download/',
+            android: 'https://play.google.com/store/apps/details?id=org.mozilla.firefox',
+            ios: 'https://apps.apple.com/app/firefox-web-browser/id989804926'
+          }
+        },
+        {
+          id: 'vlc-media-player',
+          title: 'VLC Media Player',
+          category: 'software',
+          rating: 4.8,
+          os: 'Windows, macOS, Linux, Android, iOS',
+          size: '50 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Open-source media player that supports nearly every audio and video format with advanced playback options.',
+          image: 'https://www.google.com/s2/favicons?domain=videolan.org&sz=128',
+          platformLinks: {
+            windows: 'https://www.videolan.org/vlc/download-windows.html',
+            macos: 'https://www.videolan.org/vlc/download-macosx.html',
+            linux: 'https://www.videolan.org/vlc/#download',
+            android: 'https://play.google.com/store/apps/details?id=org.videolan.vlc',
+            ios: 'https://apps.apple.com/app/vlc-for-mobile/id650377962'
+          }
+        },
+        {
+          id: 'discord',
+          title: 'Discord',
+          category: 'software',
+          rating: 4.5,
+          os: 'Windows, macOS, Linux, Android, iOS',
+          size: '90 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Communication app for voice, video, and text chat with communities, gaming servers, and collaboration features.',
+          image: 'https://www.google.com/s2/favicons?domain=discord.com&sz=128',
+          platformLinks: {
+            windows: 'https://discord.com/download',
+            macos: 'https://discord.com/download',
+            linux: 'https://discord.com/download',
+            android: 'https://play.google.com/store/apps/details?id=com.discord',
+            ios: 'https://apps.apple.com/app/discord/id985746746'
+          }
+        },
+        {
+          id: 'blender',
+          title: 'Blender',
+          category: 'software',
+          rating: 4.7,
+          os: 'Windows, macOS, Linux',
+          size: '250 MB',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Open-source 3D creation suite for modeling, animation, rendering, and visual effects.',
+          image: 'https://www.google.com/s2/favicons?domain=blender.org&sz=128',
+          platformLinks: {
+            windows: 'https://www.blender.org/download/',
+            macos: 'https://www.blender.org/download/',
+            linux: 'https://www.blender.org/download/'
+          }
+        },
+        {
+          id: 'dropbox',
+          title: 'Dropbox',
+          category: 'software',
+          rating: 4.3,
+          os: 'Windows, macOS, Linux, Android, iOS',
+          size: '45 MB',
+          price: 'Free / Paid',
+          priceSort: 0,
+          description: 'Cloud storage and file syncing service with secure sharing, backup, and collaboration features.',
+          image: 'https://www.google.com/s2/favicons?domain=dropbox.com&sz=128',
+          platformLinks: {
+            windows: 'https://www.dropbox.com/install',
+            macos: 'https://www.dropbox.com/install',
+            linux: 'https://www.dropbox.com/install',
+            android: 'https://play.google.com/store/apps/details?id=com.dropbox.android',
+            ios: 'https://apps.apple.com/app/dropbox-cloud-storage-backup/id327630330'
+          }
+        },
+        {
+          id: 'curseforge',
+          title: 'CurseForge',
+          category: 'mods',
+          rating: 4.4,
+          os: 'Web',
+          size: 'Varies by mod pack',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Official mod hosting site for Minecraft and other games, offering trusted community addons and mods.',
+          image: 'https://www.google.com/s2/favicons?domain=curseforge.com&sz=128',
+          platformLinks: {
+            official: 'https://www.curseforge.com/minecraft/mc-mods'
+          }
+        },
+        {
+          id: 'minecraft-mods',
+          title: 'Minecraft Mods',
+          category: 'mods',
+          rating: 4.7,
+          os: 'Web',
+          size: 'Varies by mod pack',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Browse curated Minecraft mods for offline and single-player worlds, including new adventures, building packs, and gameplay enhancements.',
+          image: 'https://www.google.com/s2/favicons?domain=minecraftshaders.org&sz=128',
+          platformLinks: {
+            official: 'https://www.curseforge.com/minecraft/mc-mods'
+          }
+        },
+        {
+          id: 'minecraft-shaders',
+          title: 'Minecraft Shaders',
+          category: 'mods',
+          rating: 4.6,
+          os: 'Web',
+          size: 'Varies',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Find Minecraft shaders and visual enhancement packs for single-player worlds, with trusted downloads and installation guides.',
+          image: 'https://www.google.com/s2/favicons?domain=minecraftshaders.org&sz=128',
+          platformLinks: {
+            official: 'https://www.minecraftshaders.org'
+          }
+        },
+        {
+          id: 'gta-v-mods',
+          title: 'GTA V Mods',
+          category: 'mods',
+          rating: 4.6,
+          os: 'Web',
+          size: 'Varies',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Single-player GTA V mods, maps, and story enhancements from trusted mod sites that focus on offline experience.',
+          image: 'https://www.google.com/s2/favicons?domain=nexusmods.com&sz=128',
+          platformLinks: {
+            official: 'https://www.nexusmods.com/gta5'
+          }
+        },
+        {
+          id: 'stardew-valley-mods',
+          title: 'Stardew Valley Mods',
+          category: 'mods',
+          rating: 4.7,
+          os: 'Web',
+          size: 'Varies',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Single-player Stardew Valley mods and quality-of-life content for peaceful farming and story-driven gameplay.',
+          image: 'https://www.google.com/s2/favicons?domain=nexusmods.com&sz=128',
+          platformLinks: {
+            official: 'https://www.nexusmods.com/stardewvalley'
+          }
+        },
+        {
+          id: 'terraria-mods',
+          title: 'Terraria Mods',
+          category: 'mods',
+          rating: 4.6,
+          os: 'Web',
+          size: 'Varies',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Curated Terraria mods for offline exploration, building, and solo adventure.',
+          image: 'https://www.google.com/s2/favicons?domain=nexusmods.com&sz=128',
+          platformLinks: {
+            official: 'https://www.nexusmods.com/terraria'
+          }
+        },
+        {
+          id: 'cyberpunk-mods',
+          title: 'Cyberpunk 2077 Mods',
+          category: 'mods',
+          rating: 4.5,
+          os: 'Web',
+          size: 'Varies',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Offline single-player Cyberpunk 2077 mods for visuals, UI, and story quality-of-life additions.',
+          image: 'https://www.google.com/s2/favicons?domain=nexusmods.com&sz=128',
+          platformLinks: {
+            official: 'https://www.nexusmods.com/cyberpunk2077'
+          }
+        },
+        {
+          id: 'witcher-3-mods',
+          title: 'The Witcher 3 Mods',
+          category: 'mods',
+          rating: 4.7,
+          os: 'Web',
+          size: 'Varies',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Trusted Witcher 3 single-player mods for performance, visual upgrades, and gameplay improvements.',
+          image: 'https://www.google.com/s2/favicons?domain=nexusmods.com&sz=128',
+          platformLinks: {
+            official: 'https://www.nexusmods.com/witcher3'
+          }
+        },
+        {
+          id: 'baldurs-gate-3-mods',
+          title: 'Baldur\'s Gate 3 Mods',
+          category: 'mods',
+          rating: 4.6,
+          os: 'Web',
+          size: 'Varies',
+          price: 'Free',
+          priceSort: 0,
+          description: 'Single-player Baldur\'s Gate 3 mods for story enhancements, UI tweaks, and offline character content.',
+          image: 'https://www.google.com/s2/favicons?domain=nexusmods.com&sz=128',
+          platformLinks: {
+            official: 'https://www.nexusmods.com/baldursgate3'
+          }
+        }
+      ];
+
+      const state = {
+        activeTab: 'all',
+        theme: localStorage.getItem('theme') || 'light',
+        interface: localStorage.getItem('interfaceStyle') || 'glass'
+      };
+
+      function applyTheme() {
+        document.body.setAttribute('data-theme', state.theme);
+        themeToggle.textContent = state.theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode';
+      }
+
+      function applyInterface() {
+        document.body.setAttribute('data-interface', state.interface);
+        interfaceButtons.forEach((button) => {
+          button.classList.toggle('active', button.getAttribute('data-interface') === state.interface);
+        });
+      }
+
+      function getPlatformLabel(platform) {
+        if (platform === 'macos') return 'macOS';
+        if (platform === 'ios') return 'iOS';
+        if (platform === 'windows') return 'Windows';
+        return platform.charAt(0).toUpperCase() + platform.slice(1);
+      }
+
+      function updateCounts() {
+        const total = items.length;
+        const softwareCount = items.filter((item) => item.category === 'software').length;
+        const gamesCount = items.filter((item) => item.category === 'games').length;
+        const apksCount = items.filter((item) => item.category === 'apks').length;
+        const modsCount = items.filter((item) => item.category === 'mods').length;
+
+        countAll.textContent = total;
+        countSoftware.textContent = softwareCount;
+        countGames.textContent = gamesCount;
+        countApks.textContent = apksCount;
+        countMods.textContent = modsCount;
+      }
+
+      function renderCatalog() {
+        updateCounts();
+        const sortMode = sortSelect.value;
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        const filtered = items.filter((item) => {
+          const matchesTab = state.activeTab === 'all' || item.category === state.activeTab;
+          const matchesSearch = !searchTerm || [item.title, item.description, item.category, item.os].some((field) => field.toLowerCase().includes(searchTerm));
+          return matchesTab && matchesSearch;
+        });
+        const sorted = [...filtered].sort((a, b) => {
+          if (sortMode === 'name-asc') {
+            return a.title.localeCompare(b.title);
+          }
+          if (sortMode === 'name-desc') {
+            return b.title.localeCompare(a.title);
+          }
+          if (sortMode === 'rating-asc') {
+            return a.rating - b.rating || a.title.localeCompare(b.title);
+          }
+          if (sortMode === 'rating-desc') {
+            return b.rating - a.rating || a.title.localeCompare(b.title);
+          }
+          if (sortMode === 'price-asc') {
+            return (a.priceSort || 0) - (b.priceSort || 0) || a.title.localeCompare(b.title);
+          }
+          if (sortMode === 'price-desc') {
+            return (b.priceSort || 0) - (a.priceSort || 0) || a.title.localeCompare(b.title);
+          }
+          return b.rating - a.rating;
+        });
+
+        const containers = {
+          all: document.getElementById('allGrid'),
+          software: document.getElementById('softwareGrid'),
+          games: document.getElementById('gamesGrid'),
+          apks: document.getElementById('apksGrid'),
+          mods: document.getElementById('modsGrid')
+        };
+
+        Object.values(containers).forEach((container) => {
+          if (container) {
+            container.innerHTML = '';
+          }
+        });
+
+        const container = containers[state.activeTab === 'all' ? 'all' : state.activeTab];
+        if (container && sorted.length === 0) {
+          container.innerHTML = '<div class="not-found">No results found. Try another search term.</div>';
+          return;
+        }
+
+        sorted.forEach((item) => {
+          if (!container) return;
+          const platformButtons = item.platformLinks
+            ? Object.keys(item.platformLinks)
+                .map((platform, index) => `
+                  <button class="platform-btn ${index === 0 ? 'active' : ''}" type="button" data-id="${item.id}" data-platform="${platform}">${getPlatformLabel(platform)}</button>
+                `)
+                .join('')
+            : '';
+          const defaultLink = item.platformLinks ? item.platformLinks[Object.keys(item.platformLinks)[0]] : item.link;
+          const priceHtml = item.price ? item.price.replace(/Free/g, '<span class="price-free">Free</span>') : '';
+          const card = document.createElement('article');
+          card.className = 'download-card';
+          card.innerHTML = `
+            <div class="card-media">
+              ${item.image ? `<img src="${item.image}" alt="${item.title} preview" />` : '<div class="placeholder-media">'+item.title+'</div>'}
+            </div>
+            <div class="card-body">
+              <div class="card-head">
+                <div>
+                  <h3>${item.title}</h3>
+                  <p class="card-category">${item.category.replace(/(^\w|\s+\w)/g, (m) => m.toUpperCase())}</p>
+                </div>
+              </div>
+              <p>${item.description}</p>
+              <div class="detail-meta">
+                <span>${item.rating.toFixed(1)} / 5</span>
+                <span>${item.os}</span>
+                ${priceHtml ? `<span class="price-label">${priceHtml}</span>` : ''}
+                ${item.size ? `<span>${item.size}</span>` : ''}
+              </div>
+              ${platformButtons ? `<div class="platform-switcher">${platformButtons}</div>` : ''}
+              <a class="button primary download-link" href="${defaultLink}" target="_blank" rel="noopener noreferrer">${item.actionLabel || 'Download'}</a>
+              <div class="verified-badge">🛡️ Verified Official Source</div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+
+        document.querySelectorAll('.platform-btn').forEach((button) => {
+          button.addEventListener('click', () => {
+            const id = button.getAttribute('data-id');
+            const platform = button.getAttribute('data-platform');
+            const item = items.find((entry) => entry.id === id);
+            if (!item || !item.platformLinks) return;
+            const card = button.closest('.download-card');
+            card.querySelectorAll('.platform-btn').forEach((btn) => btn.classList.remove('active'));
+            button.classList.add('active');
+            const link = card.querySelector('.download-link');
+            link.href = item.platformLinks[platform];
+          });
+        });
+      }
+
+      function activateTab(tabName) {
+        state.activeTab = tabName;
+        tabs.forEach((item) => item.classList.remove('active'));
+        panels.forEach((panel) => panel.classList.remove('active'));
+        const selectedTab = document.querySelector(`.tab[data-tab="${tabName}"]`);
+        if (selectedTab) selectedTab.classList.add('active');
+        const selectedPanel = document.getElementById(tabName);
+        if (selectedPanel) selectedPanel.classList.add('active');
+        renderCatalog();
+      }
+
+      function showModsTosModal() {
+        modsTosModal.classList.remove('hidden');
+      }
+
+      function hideModsTosModal() {
+        modsTosModal.classList.add('hidden');
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const tabName = tab.getAttribute('data-tab');
+          if (tabName === 'mods' && !modsTosAccepted) {
+            showModsTosModal();
+            return;
+          }
+          activateTab(tabName);
+        });
+      });
+
+      modsTosAgree.addEventListener('click', () => {
+        modsTosAccepted = true;
+        localStorage.setItem('modsTosAccepted', 'true');
+        hideModsTosModal();
+        activateTab('mods');
+      });
+
+      modsTosCancel.addEventListener('click', hideModsTosModal);
+      modsTosClose.addEventListener('click', hideModsTosModal);
+
+      modsTosModal.addEventListener('click', (event) => {
+        if (event.target === modsTosModal) hideModsTosModal();
+      });
+
+      sortSelect.addEventListener('change', renderCatalog);
+      searchInput.addEventListener('input', renderCatalog);
+      const openSuggestionModal = document.getElementById('openSuggestionModal');
+      const openBugModal = document.getElementById('openBugModal');
+      const contactModal = document.getElementById('contactModal');
+      const contactModalClose = document.getElementById('contactModalClose');
+      const contactSubject = document.getElementById('contactSubject');
+
+      function openContactModal(subject) {
+        contactSubject.value = subject;
+        contactModal.classList.remove('hidden');
+      }
+
+      function closeContactModal() {
+        contactModal.classList.add('hidden');
+      }
+
+      openSuggestionModal.addEventListener('click', () => openContactModal('Suggestion'));
+      openBugModal.addEventListener('click', () => openContactModal('Bug Report'));
+      contactModalClose.addEventListener('click', closeContactModal);
+      contactModal.addEventListener('click', (event) => {
+        if (event.target === contactModal) closeContactModal();
+      });
+
+      themeToggle.addEventListener('click', () => {
+        state.theme = state.theme === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', state.theme);
+        applyTheme();
+      });
+
+      interfaceButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          state.interface = button.getAttribute('data-interface');
+          localStorage.setItem('interfaceStyle', state.interface);
+          applyInterface();
+        });
+      });
+
+      applyTheme();
+      applyInterface();
+      renderCatalog();
+    </script>
+  </body>
+</html>

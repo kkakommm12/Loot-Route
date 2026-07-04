@@ -195,6 +195,13 @@ h2 {
   margin-top: 2rem;
 }
 
+.install-note {
+  margin-top: 0.85rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 720px;
+}
+
 .interface-picker {
   display: flex;
   flex-wrap: wrap;

@@ -8,6 +8,12 @@
       name="description"
       content="Loot Route is a clean and modern landing page for software, games, APKs, and mods."
     />
+    <meta name="theme-color" content="#111827" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Loot Route" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="lootrouteicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -46,7 +52,9 @@
           <div class="hero-actions">
             <a class="button primary" href="#downloads">Explore downloads</a>
             <a class="button secondary" href="#policy">Read our policy</a>
+            <button class="button secondary" id="installAppBtn" type="button" hidden>Install app</button>
           </div>
+          <p class="install-note" id="installNote">Install on Android or iPhone by opening this site in Chrome/Safari and choosing “Install” or “Add to Home Screen”.</p>
         </div>
       </div>
     </header>
@@ -208,6 +216,8 @@
       const sortSelect = document.getElementById('sortSelect');
       const searchInput = document.getElementById('searchInput');
       const themeToggle = document.getElementById('themeToggle');
+      const installAppBtn = document.getElementById('installAppBtn');
+      const installNote = document.getElementById('installNote');
       const interfaceButtons = document.querySelectorAll('.interface-btn');
       const countAll = document.getElementById('count-all');
       const countSoftware = document.getElementById('count-software');
@@ -1148,6 +1158,43 @@
         localStorage.setItem('theme', state.theme);
         applyTheme();
       });
+
+      let deferredInstallPrompt = null;
+
+      window.addEventListener('beforeinstallprompt', (event) => {
+        event.preventDefault();
+        deferredInstallPrompt = event;
+        installAppBtn.hidden = false;
+        installNote.textContent = 'Install is ready. Tap the button below to add Loot Route to your home screen.';
+      });
+
+      window.addEventListener('appinstalled', () => {
+        installAppBtn.hidden = true;
+        installNote.textContent = 'Loot Route is installed and ready to use.';
+        deferredInstallPrompt = null;
+      });
+
+      installAppBtn.addEventListener('click', async () => {
+        if (!deferredInstallPrompt) {
+          installNote.textContent = 'Your browser did not show an install prompt. On Android, open this page in Chrome and use the browser menu. On iPhone, use Share → Add to Home Screen.';
+          return;
+        }
+        deferredInstallPrompt.prompt();
+        const { outcome } = await deferredInstallPrompt.userChoice;
+        if (outcome === 'accepted') {
+          installAppBtn.hidden = true;
+          installNote.textContent = 'Install accepted.';
+        } else {
+          installNote.textContent = 'Install cancelled. You can still add it from your browser menu.';
+        }
+        deferredInstallPrompt = null;
+      });
+
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').catch(() => {});
+        });
+      }
 
       interfaceButtons.forEach((button) => {
         button.addEventListener('click', () => {
